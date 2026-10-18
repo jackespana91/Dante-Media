@@ -24,7 +24,7 @@ Open `http://localhost:8080/`. Static generated HTML in `dist` needs no server d
 ## The necessary human approvals
 1. Validate brand legal ownership, names, exact relationships, launch/operating statuses and domains. The directory uses cautious public language; it should still be approved by the group.
 2. Verify Broken Homes' legal status and review language with charity/safeguarding counsel.
-3. Set a verified **Dante Media** group contact email in `content.py` (`GROUP_EMAIL` is deliberately empty). The PlayBeSpoke contact email is used only for PlayBeSpoke enquiries.
+3. The group contact route is configured as `info@dante-media.io` in `content.py` based on the group's existing address. **Test delivery, mailbox access and response ownership before launch.** PlayBeSpoke enquiries still route to its own email.
 4. Set up a real contact management route; do not deploy pretend email forms or collect beneficiary information.
 5. Approve privacy/cookie/consent/legal disclosures before public launch. These are **not** fabricated in this package.
 6. Port into the existing website and compare/retain its valuable current film, original assets, advisory content and established SEO URLs.
