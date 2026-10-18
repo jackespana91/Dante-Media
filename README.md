@@ -1,43 +1,46 @@
-# Dante Media — group website rebuild (staging package)
+# Dante Media
 
-This is a responsive, editable, multi-page **static-site implementation** of the new Dante Media parent-group positioning. Broken Homes is central to the site, clearly labelled as a foundation planned for launch.
+The editable Dante Media website: twelve connected pages covering the group, its ventures, approach, partnerships and the planned Broken Homes foundation. The site builds to dependency-free HTML, CSS, JavaScript, fonts and images for static hosting.
 
-**Not deployed to dante-media.io.** Access to that live site's editor/repository could not be verified in this session, and the current site's code/framework was not available. This is a working replacement/reference implementation for Codex to port, review, and stage.
+## Run locally
 
-## Preview locally
-
-```bash
-python -m pip install -r requirements.txt
-python build.py
-cd dist && python -m http.server 8080
-```
-Open `http://localhost:8080/`. Static generated HTML in `dist` needs no server dependencies and can be hosted by any static host when configured for directory index routes.
-
-## What's included
-- 12 interconnected pages and responsive nav/footer.
-- Filterable 12-entry business directory with editorial status and accurately cautious relationship language.
-- Dedicated, extensive Broken Homes section and the foundation as a group-wide commitment on every page.
-- SEO metadata, canonicals, Open Graph/Twitter metadata, JSON-LD Organization/WebPage/Breadcrumbs, sitemap, robots.
-- Keyboard-accessible nav, reduced-motion support, responsive layouts, no marketing trackers or unrelated brand cookies.
-- `docs/CODEX_IMPLEMENTATION_BRIEF.md` for integration into the **real** site, plus `docs/BROKEN_HOMES_OPERATING_STANDARD.md`.
-
-## Build a review preview without touching the domain
-
-GitHub Actions includes a **manual**, crawler-excluded Pages preview. It requires setting this repository's **Settings > Pages > Build and deployment > GitHub Actions** once; then run **Actions > Publish manual staging preview (not live domain)**. No production domain or DNS changes are made. See [Hosting and publishing](docs/HOSTING_AND_PUBLISHING.md).
-
-You can also create a local project-path preview with:
-
-```bash
-DANTE_STAGING=1 DANTE_BASE_PATH=/Dante-Media python build.py
+```sh
+python3 -m venv .venv
+.venv/bin/python -m pip install -r requirements.txt
+.venv/bin/python build.py
+.venv/bin/python -m http.server 8765 --directory dist
 ```
 
-## The necessary human approvals
-1. Validate brand legal ownership, names, exact relationships, launch/operating statuses and domains. The directory uses cautious public language; it should still be approved by the group.
-2. Verify Broken Homes' legal status and review language with charity/safeguarding counsel.
-3. The group contact route is configured as `info@dante-media.io` in `content.py` based on the group's existing address. **Test delivery, mailbox access and response ownership before launch.** PlayBeSpoke enquiries still route to its own email.
-4. Set up a real contact management route; do not deploy pretend email forms or collect beneficiary information.
-5. Approve privacy/cookie/consent/legal disclosures before public launch. These are **not** fabricated in this package.
-6. Port into the existing website and compare/retain its valuable current film, original assets, advisory content and established SEO URLs.
-7. Test staged pages including mobile navigation, performance, structured data, redirects and accessibility; publish only after approval.
+Open `http://127.0.0.1:8765/`.
 
-© 2026 Dante Media. Website source delivered for the site's authorised owner.
+## Source
+
+- `content.py` — venture profiles, statuses, contacts, navigation and page metadata.
+- `templates/` — page content and shared components.
+- `assets/` — responsive styles, interactions, compressed artwork and self-hosted fonts. Font licences are included under `assets/fonts/`.
+- `build.py` — production compiler. Generated output goes to `dist/`.
+- `tests/test_site.py` — isolated production and staging regression checks.
+
+## Verify
+
+```sh
+.venv/bin/python -m unittest discover -s tests -v
+```
+
+See [the completion checkpoint](docs/VERIFICATION.md) for the build results and browser review. CI runs the build and tests for pull requests and saves a static review artifact.
+
+## Preview on a project path
+
+```sh
+DANTE_STAGING=1 DANTE_BASE_PATH=/Dante-Media .venv/bin/python build.py
+```
+
+Staging includes `noindex,nofollow` and crawler exclusion. The optional `staging-pages.yml` workflow publishes a GitHub Pages preview only when manually triggered. See [Hosting and publishing](docs/HOSTING_AND_PUBLISHING.md).
+
+## Content and publication
+
+Changes remain in the review branch until publication is authorised. Broken Homes is a foundation planned for launch; services and beneficiary referrals are not open. Venture profiles distinguish current development stages and collaborations without implying common ownership.
+
+Before the production domain is connected, confirm the existing host and redirect requirements, business relationships, legal disclosures and ownership of the configured contact mailbox. The detailed handoff is in [the implementation brief](docs/CODEX_IMPLEMENTATION_BRIEF.md), [hosting notes](docs/HOSTING_AND_PUBLISHING.md) and [Broken Homes operating standard](docs/BROKEN_HOMES_OPERATING_STANDARD.md).
+
+Existing parent and venture imagery used in the visual system is documented in [the visual asset register](docs/VISUAL_ASSETS.md).

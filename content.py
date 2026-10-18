@@ -24,6 +24,19 @@ BRANDS = [
     dict(name='Broken Homes', category='impact', label='Foundation / Social Impact', status='Foundation planned', description='Our shared commitment to expanding access to support, mentorship and opportunity for young people and families facing difficult circumstances.', url='/broken-homes/', icon='BH', accent='gold', note='At the heart of the group'),
 ]
 
+
+# Existing artwork and supplied identities; provenance is recorded in docs/VISUAL_ASSETS.md.
+BRAND_VISUALS = {
+    'PlayBeSpoke': dict(art='/assets/ventures/playbespoke-character.webp', logo='/assets/ventures/playbespoke-logo-dark.svg'),
+    'Hustle Labs': dict(art='/assets/ventures/hustle-labs-mark.webp'),
+    'Lucky Bastards': dict(art='/assets/ventures/playbespoke-gameplay.webp', logo='/assets/ventures/lucky-bastards-logo.png'),
+    'The Plug TV': dict(art='/assets/ventures/plug-tv-screen.webp', logo='/assets/ventures/plug-tv-logo.webp'),
+    'Futpal': dict(art='/assets/ventures/futpal-community.webp', logo='/assets/ventures/futpal-logo.webp'),
+    'Broken Homes': dict(art='/assets/sector-foundation.jpg'),
+}
+for brand in BRANDS:
+    brand.update(BRAND_VISUALS.get(brand['name'], {}))
+
 NAV = [
     ('Our businesses','/businesses/'),
     ('Our approach','/approach/'),
@@ -43,6 +56,6 @@ PAGE_META = {
     '/partnerships/': ('Partnerships | Dante Media', 'Partner with Dante Media across technology, content, distribution, grassroots sport or community impact.'),
     '/work/': ('Our Work | Dante Media', 'Explore selected ventures and initiatives taking shape across the Dante Media ecosystem.'),
     '/about/': ('About Us | Dante Media', 'Learn about the ambition, principles and people-first mission behind the Dante Media ecosystem.'),
-    '/news/': ('News & Updates | Dante Media', 'Follow the latest official announcements from Dante Media and its ventures.'),
+    '/news/': ('Inside Dante | Ideas & Updates', 'Explore the ventures and ideas shaping Dante Media across gaming, media, grassroots football and our shared purpose.'),
     '/contact/': ('Contact | Dante Media', 'Find the right route for enquiries about Dante Media, its businesses and the upcoming Broken Homes foundation.'),
 }
