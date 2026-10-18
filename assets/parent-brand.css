@@ -345,7 +345,16 @@
 
 @media (max-width: 950px) {
   .hero>.container {
+    grid-template-columns: 1fr;
     gap: 10px;
+  }
+
+  .hero-copy {
+    padding: 105px 0 22px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4.6rem, 8vw, 7rem);
   }
 
   .hero-art {
@@ -364,6 +373,18 @@
 }
 
 @media (max-width: 670px) {
+  .hero-copy {
+    padding: 80px 0 0;
+  }
+
+  .hero h1 {
+    font-size: clamp(3.7rem, 12vw, 5.4rem);
+  }
+
+  .hero-sub {
+    font-size: 16px;
+  }
+
   .hero-art {
     width: 100%;
     margin-top: 22px;
