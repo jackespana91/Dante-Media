@@ -5,3 +5,7 @@ __pycache__/
 .env.*
 .DS_Store
 dist/
+
+# Local browser review artifacts
+.playwright-mcp/
+/dante-*.png

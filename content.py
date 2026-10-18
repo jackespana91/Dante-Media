@@ -43,6 +43,6 @@ PAGE_META = {
     '/partnerships/': ('Partnerships | Dante Media', 'Partner with Dante Media across technology, content, distribution, grassroots sport or community impact.'),
     '/work/': ('Our Work | Dante Media', 'Explore selected ventures and initiatives taking shape across the Dante Media ecosystem.'),
     '/about/': ('About Us | Dante Media', 'Learn about the ambition, principles and people-first mission behind the Dante Media ecosystem.'),
-    '/news/': ('News & Updates | Dante Media', 'Follow the latest official announcements from Dante Media and its ventures.'),
+    '/news/': ('Inside Dante | Ideas & Updates', 'Explore the ventures and ideas shaping Dante Media across gaming, media, grassroots football and our shared purpose.'),
     '/contact/': ('Contact | Dante Media', 'Find the right route for enquiries about Dante Media, its businesses and the upcoming Broken Homes foundation.'),
 }

@@ -7,7 +7,8 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urljoin
 import html, json, os, re, shutil
-from jinja2 import Environment, FileSystemLoader, select_autoescape
+import tempfile
+from jinja2 import Environment, FileSystemLoader, StrictUndefined, select_autoescape
 from content import BRANDS, GROUP_EMAIL, NAV, PAGE_META, SITE_URL
 
 ROOT = Path(__file__).resolve().parent
@@ -44,15 +45,38 @@ def schema_for(path: str, title: str, description: str) -> dict:
     return {'@context': 'https://schema.org', '@graph': graph}
 
 
-def main() -> None:
-    if DIST.exists(): shutil.rmtree(DIST)
-    DIST.mkdir(parents=True)
-    shutil.copytree(ROOT / 'assets', DIST / 'assets')
-    env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=select_autoescape(['html','xml']))
-    staging = os.environ.get('DANTE_STAGING', '').lower() in {'1', 'true', 'yes'}
-    base_path = os.environ.get('DANTE_BASE_PATH', '').rstrip('/')
-    if base_path and (not base_path.startswith('/') or '//' in base_path):
-        raise ValueError('DANTE_BASE_PATH must be empty or a site subpath beginning with /')
+def normalize_base_path(base_path: str) -> str:
+    """Accept a root or simple URL path, without URL queries or dot segments."""
+    if base_path in {'', '/'}:
+        return ''
+    normalized = base_path.rstrip('/')
+    if (not re.fullmatch(r'/[A-Za-z0-9._~/-]+', base_path)
+            or '//' in base_path
+            or any(part in {'.', '..'} for part in normalized.split('/'))):
+        raise ValueError('DANTE_BASE_PATH must be empty or a URL subpath such as /Dante-Media')
+    return normalized
+
+
+def build_site(output_dir: Path = DIST, *, staging: bool = False, base_path: str = '') -> None:
+    """Render a complete release before replacing the previous generated site."""
+    base_path = normalize_base_path(base_path)
+    output_dir = Path(output_dir)
+    output_dir.parent.mkdir(parents=True, exist_ok=True)
+    env = Environment(loader=FileSystemLoader(str(TEMPLATES)),
+                      autoescape=select_autoescape(['html', 'xml']),
+                      undefined=StrictUndefined)
+    # A bad setting or template must not erase a working preview/release.
+    with tempfile.TemporaryDirectory(prefix='.dante-build-', dir=output_dir.parent) as temporary:
+        release = Path(temporary) / 'site'
+        release.mkdir()
+        shutil.copytree(ROOT / 'assets', release / 'assets')
+        render_pages(env, release, staging=staging, base_path=base_path)
+        if output_dir.exists():
+            shutil.rmtree(output_dir)
+        release.replace(output_dir)
+
+
+def render_pages(env: Environment, release: Path, *, staging: bool, base_path: str) -> None:
     featured_names = {'PlayBeSpoke','IGW³','Futpal','Broken Homes','Lucky Bastards','The Plug TV'}
     for path,(page_key, template) in PAGES.items():
         title, desc = PAGE_META[path]
@@ -67,7 +91,7 @@ def main() -> None:
             'group_email':GROUP_EMAIL, 'year':date.today().year, 'is_staging':staging,
             'schema_json':json.dumps(schema_for(path,title,desc),ensure_ascii=False).replace('<','\\u003c'),
         }
-        out = DIST / path.lstrip('/') / 'index.html' if path != '/' else DIST / 'index.html'
+        out = release / path.lstrip('/') / 'index.html' if path != '/' else release / 'index.html'
         out.parent.mkdir(parents=True,exist_ok=True)
         markup = env.get_template(template).render(**context)
         if base_path:
@@ -77,9 +101,14 @@ def main() -> None:
     for path in PAGES:
         sitemap.append('  <url><loc>'+html.escape(urljoin(SITE_URL+'/',path.lstrip('/')) )+'</loc></url>')
     sitemap.append('</urlset>')
-    (DIST/'sitemap.xml').write_text('\n'.join(sitemap)+'\n',encoding='utf-8')
+    (release/'sitemap.xml').write_text('\n'.join(sitemap)+'\n',encoding='utf-8')
     robots = 'User-agent: *\nDisallow: /\n' if staging else 'User-agent: *\nAllow: /\nSitemap: '+SITE_URL+'/sitemap.xml\n'
-    (DIST/'robots.txt').write_text(robots, encoding='utf-8')
+    (release/'robots.txt').write_text(robots, encoding='utf-8')
+
+
+def main() -> None:
+    staging = os.environ.get('DANTE_STAGING', '').strip().lower() in {'1', 'true', 'yes'}
+    build_site(DIST, staging=staging, base_path=os.environ.get('DANTE_BASE_PATH', ''))
     print(f'Built {len(PAGES)} pages to {DIST}')
 
 if __name__ == '__main__': main()
