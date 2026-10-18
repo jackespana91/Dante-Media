@@ -7,7 +7,7 @@ partner pitch, and never equate partner distribution with owned operations.
 
 SITE_NAME = 'Dante Media'
 SITE_URL = 'https://www.dante-media.io'
-GROUP_EMAIL = ''  # IMPORTANT: Populate with a verified official group email before going live.
+GROUP_EMAIL = 'info@dante-media.io'  # Existing Dante Media address; test delivery and handling before launch.
 
 BRANDS = [
     dict(name='PlayBeSpoke', category='gaming', label='Gaming & Technology', status='Platform / active development', description='Bespoke game creation and a multi-studio production ecosystem, built for operators, studios and creators.', url='https://playbespoke.com', icon='PB', accent='gold', note='Flagship platform'),
