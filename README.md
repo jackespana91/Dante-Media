@@ -27,9 +27,9 @@ GitHub Actions includes a **manual**, crawler-excluded Pages preview. It require
 
 You can also create a local project-path preview with:
 
-\`\`\`bash
+```bash
 DANTE_STAGING=1 DANTE_BASE_PATH=/Dante-Media python build.py
-\`\`\`
+```
 
 ## The necessary human approvals
 1. Validate brand legal ownership, names, exact relationships, launch/operating statuses and domains. The directory uses cautious public language; it should still be approved by the group.
