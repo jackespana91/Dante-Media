@@ -25,6 +25,11 @@ jobs:
         run: python build.py
       - name: Validate routes and links
         run: python -m unittest discover -s tests -v
+      - name: Build noindex review artifact (does not deploy)
+        env:
+          DANTE_STAGING: '1'
+          DANTE_BASE_PATH: /Dante-Media
+        run: python build.py
       - name: Save static website artifact (no deployment)
         uses: actions/upload-artifact@v4
         with:
