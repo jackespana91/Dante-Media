@@ -771,3 +771,34 @@ body {
     max-height: 340px;
   }
 }
+
+.business-card::after {
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  height: 54%;
+  background-position: center 42%;
+  background-size: cover;
+  content: "";
+  opacity: .28;
+  pointer-events: none;
+  mask-image: linear-gradient(180deg, #000 0%, transparent 100%);
+}
+.business-card > * {
+  position: relative;
+  z-index: 1;
+}
+.business-card[data-category="gaming"]::after {
+  background-image: url("/assets/sector-gaming.jpg");
+}
+.business-card[data-category="media"]::after {
+  background-image: url("/assets/sector-media.jpg");
+}
+.business-card[data-category="sport"]::after {
+  background-image: url("/assets/sector-sport.jpg");
+}
+.business-card[data-category="impact"]::after {
+  background-image: url("/assets/sector-foundation.jpg");
+}
