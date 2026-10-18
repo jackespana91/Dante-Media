@@ -440,3 +440,10 @@ body {
     transition: none !important;
   }
 }
+
+.work-method {
+  margin: clamp(54px, 7vw, 88px) 0;
+}
+.work-method .section-head {
+  margin-bottom: 34px;
+}
