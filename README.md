@@ -21,6 +21,16 @@ Open `http://localhost:8080/`. Static generated HTML in `dist` needs no server d
 - Keyboard-accessible nav, reduced-motion support, responsive layouts, no marketing trackers or unrelated brand cookies.
 - `docs/CODEX_IMPLEMENTATION_BRIEF.md` for integration into the **real** site, plus `docs/BROKEN_HOMES_OPERATING_STANDARD.md`.
 
+## Build a review preview without touching the domain
+
+GitHub Actions includes a **manual**, crawler-excluded Pages preview. It requires setting this repository's **Settings > Pages > Build and deployment > GitHub Actions** once; then run **Actions > Publish manual staging preview (not live domain)**. No production domain or DNS changes are made. See [Hosting and publishing](docs/HOSTING_AND_PUBLISHING.md).
+
+You can also create a local project-path preview with:
+
+\`\`\`bash
+DANTE_STAGING=1 DANTE_BASE_PATH=/Dante-Media python build.py
+\`\`\`
+
 ## The necessary human approvals
 1. Validate brand legal ownership, names, exact relationships, launch/operating statuses and domains. The directory uses cautious public language; it should still be approved by the group.
 2. Verify Broken Homes' legal status and review language with charity/safeguarding counsel.
