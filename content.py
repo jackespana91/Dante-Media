@@ -24,6 +24,19 @@ BRANDS = [
     dict(name='Broken Homes', category='impact', label='Foundation / Social Impact', status='Foundation planned', description='Our shared commitment to expanding access to support, mentorship and opportunity for young people and families facing difficult circumstances.', url='/broken-homes/', icon='BH', accent='gold', note='At the heart of the group'),
 ]
 
+
+# Existing artwork and supplied identities; provenance is recorded in docs/VISUAL_ASSETS.md.
+BRAND_VISUALS = {
+    'PlayBeSpoke': dict(art='/assets/ventures/playbespoke-character.webp', logo='/assets/ventures/playbespoke-logo-dark.svg'),
+    'Hustle Labs': dict(art='/assets/ventures/hustle-labs-mark.webp'),
+    'Lucky Bastards': dict(art='/assets/ventures/playbespoke-gameplay.webp', logo='/assets/ventures/lucky-bastards-logo.png'),
+    'The Plug TV': dict(art='/assets/ventures/plug-tv-screen.webp', logo='/assets/ventures/plug-tv-logo.webp'),
+    'Futpal': dict(art='/assets/ventures/futpal-community.webp', logo='/assets/ventures/futpal-logo.webp'),
+    'Broken Homes': dict(art='/assets/sector-foundation.jpg'),
+}
+for brand in BRANDS:
+    brand.update(BRAND_VISUALS.get(brand['name'], {}))
+
 NAV = [
     ('Our businesses','/businesses/'),
     ('Our approach','/approach/'),

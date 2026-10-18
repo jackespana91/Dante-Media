@@ -33,3 +33,9 @@ Interactive checks passed for all six portfolio filters, result counts, reload p
 ## Publication boundary
 
 The live domain has not been changed. The existing hosting/integration and owner checks in `HOSTING_AND_PUBLISHING.md` still apply before publication. Broken Homes is planned, does not yet deliver services and does not accept beneficiary referrals. No invented launch dates, customer metrics or impact outcomes were added.
+
+## Visual direction update — 18 October 2026
+
+The visual pass now uses existing parent and venture identities, original studio artwork, existing gameplay imagery and Futpal's documented illustrative football scene. A composed hero, light editorial section, asymmetric featured portfolio and individual venture art panels replace the previous repeated image treatment. See `VISUAL_ASSETS.md` for sources and usage context.
+
+Rebuilt all 12 pages and reran the 10 regression tests successfully. Browser checks covered 60 route/viewport combinations (1440, 1024, 768, 390 and 320px) with no horizontal overflow, clipped primary copy, required-image failures, resource errors or JavaScript errors. Rechecked the mobile menu, all six portfolio filter counts and the five-item featured rail including its disabled boundary state.

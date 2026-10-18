@@ -1,1 +1,13 @@
-<article class="business-card" data-category="{{ b.category }}" data-reveal><div class="business-card-top"><div class="sigil {{ b.accent }}" aria-hidden="true">{{ b.icon }}</div><span class="chip">{{ b.note }}</span></div><h3>{{ b.name }}</h3><p>{{ b.description }}</p><div class="meta"><span>{{ b.label }}</span><span>{{ b.status }}</span></div>{% if b.url %}<a class="text-link" style="margin-top:17px;align-self:flex-start" href="{{ b.url }}" {% if b.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ 'Learn more' if not b.url.startswith('http') else 'Visit website' }} <span aria-hidden="true">↗</span></a>{% else %}<a class="text-link" style="margin-top:17px;align-self:flex-start" href="/contact/#group-enquiries">Ask about {{ b.name }} <span aria-hidden="true">↗</span></a>{% endif %}</article>
+<article class="business-card" data-category="{{ b.category }}" data-brand="{{ b.icon|lower }}" data-reveal>
+  <div class="business-art" aria-hidden="true">
+    {% if b.get('art') %}<img class="business-art-image" src="{{ b.art }}" alt="" loading="lazy" decoding="async">{% else %}<span class="business-art-type">{{ b.name }}</span>{% endif %}
+    {% if b.get('logo') %}<img class="business-art-logo" src="{{ b.logo }}" alt="" loading="lazy" decoding="async">{% elif not b.get('art') %}<span class="business-art-monogram">{{ b.icon }}</span>{% endif %}
+    <span class="business-art-label">{{ b.label }}</span>
+  </div>
+  <div class="business-card-content">
+    <div class="business-card-top"><span class="chip">{{ b.note }}</span><span class="business-card-arrow" aria-hidden="true">↗</span></div>
+    <h3>{{ b.name }}</h3><p>{{ b.description }}</p>
+    <div class="meta"><span>{{ b.label }}</span><span>{{ b.status }}</span></div>
+    {% if b.url %}<a class="text-link" href="{{ b.url }}" {% if b.url.startswith('http') %}target="_blank" rel="noopener noreferrer"{% endif %}>{{ 'Learn more' if not b.url.startswith('http') else 'Visit website' }} <span aria-hidden="true">↗</span></a>{% else %}<a class="text-link" href="/contact/#group-enquiries">Ask about {{ b.name }} <span aria-hidden="true">↗</span></a>{% endif %}
+  </div>
+</article>

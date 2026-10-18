@@ -77,7 +77,7 @@ def build_site(output_dir: Path = DIST, *, staging: bool = False, base_path: str
 
 
 def render_pages(env: Environment, release: Path, *, staging: bool, base_path: str) -> None:
-    featured_names = {'PlayBeSpoke','IGW³','Futpal','Broken Homes','Lucky Bastards','The Plug TV'}
+    featured_names = {'PlayBeSpoke','IGW³','Futpal','Lucky Bastards','The Plug TV'}
     for path,(page_key, template) in PAGES.items():
         title, desc = PAGE_META[path]
         canonical = urljoin(SITE_URL + '/', path.lstrip('/'))

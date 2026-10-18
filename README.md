@@ -42,3 +42,5 @@ Staging includes `noindex,nofollow` and crawler exclusion. The optional `staging
 Changes remain in the review branch until publication is authorised. Broken Homes is a foundation planned for launch; services and beneficiary referrals are not open. Venture profiles distinguish current development stages and collaborations without implying common ownership.
 
 Before the production domain is connected, confirm the existing host and redirect requirements, business relationships, legal disclosures and ownership of the configured contact mailbox. The detailed handoff is in [the implementation brief](docs/CODEX_IMPLEMENTATION_BRIEF.md), [hosting notes](docs/HOSTING_AND_PUBLISHING.md) and [Broken Homes operating standard](docs/BROKEN_HOMES_OPERATING_STANDARD.md).
+
+Existing parent and venture imagery used in the visual system is documented in [the visual asset register](docs/VISUAL_ASSETS.md).

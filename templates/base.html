@@ -28,7 +28,7 @@
   <div class="topline"><span class="sparkle">✳</span> Independent minds. Connected ambition. Shared purpose. <a href="/broken-homes/">Our commitment to Broken Homes <span aria-hidden="true">↗</span></a></div>
   <header class="site-header" id="site-header">
     <div class="container header-inner">
-      <a class="brand" href="/" aria-label="Dante Media home"><span class="brand-mark" aria-hidden="true">D<span>.</span></span><span class="brand-name">DANTE<span>MEDIA</span><small>BUILDING WHAT COMES NEXT</small></span></a>
+      <a class="brand" href="/" aria-label="Dante Media home"><span class="brand-mark brand-mark-art" aria-hidden="true"><img src="/assets/ventures/dante-media-mark-160.webp" alt="" width="160" height="160"></span><span class="brand-name">DANTE<span>MEDIA</span><small>BUILDING WHAT COMES NEXT</small></span></a>
       <button class="menu-button" type="button" aria-controls="main-navigation" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
       <nav class="main-nav" id="main-navigation" aria-label="Main navigation">
         {% for text, href in nav %}<a href="{{ href }}"{% if path == href %} aria-current="page"{% endif %}{% if href == '/broken-homes/' %} class="nav-heart"{% elif href == '/businesses/' and page_key in ['gaming', 'media', 'sport', 'work'] %} class="nav-section"{% endif %}>{{ text }}{% if href == '/broken-homes/' %}<span aria-hidden="true">✦</span>{% endif %}</a>{% endfor %}
