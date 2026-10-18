@@ -187,9 +187,11 @@
 }
 
 .venture-node small {
+  overflow: hidden;
   color: #87878c;
   font-size: clamp(8px, .76vw, 10px);
   line-height: 1.2;
+  text-overflow: ellipsis;
   white-space: nowrap;
 }
 
