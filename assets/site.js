@@ -7,6 +7,13 @@
       toggle.setAttribute('aria-expanded', String(!expanded));
       nav.classList.toggle('open', !expanded);
     });
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && nav.classList.contains('open')) {
+        toggle.setAttribute('aria-expanded', 'false');
+        nav.classList.remove('open');
+        toggle.focus();
+      }
+    });
     nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
       toggle.setAttribute('aria-expanded', 'false');
       nav.classList.remove('open');
