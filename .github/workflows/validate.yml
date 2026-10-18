@@ -1,0 +1,33 @@
+name: Validate Dante Media website
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install build dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Build website
+        run: python build.py
+      - name: Validate routes and links
+        run: python -m unittest discover -s tests -v
+      - name: Save static website artifact (no deployment)
+        uses: actions/upload-artifact@v4
+        with:
+          name: dante-media-static-preview
+          path: dist/
+          retention-days: 14
