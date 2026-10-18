@@ -6,6 +6,7 @@
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#08090c">
   <meta name="description" content="{{ description }}">
+  {% if is_staging %}<meta name="robots" content="noindex,nofollow">{% endif %}
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Dante Media">
   <meta property="og:title" content="{{ title }}">
@@ -32,7 +33,7 @@
       </nav>
     </div>
   </header>
-  <main id="main">
+  <main id="main" tabindex="-1">
   {% block content %}{% endblock %}
   </main>
   <footer class="site-footer">
