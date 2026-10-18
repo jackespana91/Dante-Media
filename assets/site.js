@@ -21,39 +21,6 @@
     matchMedia('(min-width: 951px)').addEventListener('change', () => setMenu(false));
   }
 
-  document.querySelectorAll('[data-venture-carousel]').forEach(carousel => {
-    const rail = carousel.querySelector('.featured-grid');
-    const controls = carousel.querySelector('.carousel-controls');
-    const previous = carousel.querySelector('[data-carousel-prev]');
-    const next = carousel.querySelector('[data-carousel-next]');
-    const counter = carousel.querySelector('[data-carousel-count]');
-    const mobile = matchMedia('(max-width: 670px)');
-    const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
-    const step = () => rail.children[0].getBoundingClientRect().width + 16;
-    const update = () => {
-      const index = Math.min(rail.children.length - 1, Math.round(rail.scrollLeft / step()));
-      controls.hidden = !mobile.matches;
-      rail.tabIndex = mobile.matches ? 0 : -1;
-      previous.disabled = rail.scrollLeft < 2;
-      next.disabled = rail.scrollLeft >= rail.scrollWidth - rail.clientWidth - 2;
-      const label = `${index + 1} of ${rail.children.length}`;
-      if (counter.textContent !== label) counter.textContent = label;
-    };
-    const move = direction => rail.scrollBy({left: direction * step(), behavior: reducedMotion.matches ? 'instant' : 'smooth'});
-    previous.addEventListener('click', () => move(-1));
-    next.addEventListener('click', () => move(1));
-    rail.addEventListener('scroll', update, {passive: true});
-    rail.addEventListener('keydown', event => {
-      if (event.target === rail && ['ArrowLeft', 'ArrowRight'].includes(event.key)) {
-        event.preventDefault();
-        move(event.key === 'ArrowRight' ? 1 : -1);
-      }
-    });
-    mobile.addEventListener('change', update);
-    addEventListener('resize', update, {passive: true});
-    update();
-  });
-
   const filters = Array.from(document.querySelectorAll('[data-filter]'));
   const cards = Array.from(document.querySelectorAll('[data-category]'));
   if (filters.length) {

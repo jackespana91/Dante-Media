@@ -55,6 +55,16 @@ These venture assets are for their named business and project presentations. The
 
 `assets/ventures/dante-media-logo.webp` is an unchanged copy of the supplied black/gold Dante Media artwork from `Dante - Media/build/assets/brands/dante-media-logo.webp` (1254 × 1254). The earlier project README identifies this as the supplied logo replacing its text stand-in. The full artwork is preserved without cropping, recolouring or redrawing.
 
-The supplied `playbespoke-logo-dark.svg` is the white/lime identity designed for dark surfaces; it is used in the site hero, ribbon and venture card. The black `playbespoke-logo.svg` is retained as the supplied variant for light surfaces.
+The supplied `playbespoke-logo-dark.svg` is the white/lime identity designed for dark surfaces. The black `playbespoke-logo.svg` is the supplied variant for light surfaces. Both files are preserved as source assets; the current presentation uses gameplay imagery and text labels rather than overlaid logos.
 
-`assets/ventures/dante-media-mark-160.webp` is a proportional 160 × 160 delivery derivative of the full supplied parent artwork, used in the header to reduce transfer size. It preserves the complete frame.
+`assets/ventures/dante-media-mark-160.webp` is a proportional 160 × 160 delivery derivative of the full supplied parent artwork. It preserves the complete frame. Both parent artwork files remain available; the current header uses a simple text navigation identity. The About page uses an HTML typographic statement instead of the poster artwork.
+
+## Foundation community visual — 18 October 2026
+
+`assets/foundation-community-v2.jpg` is an AI-generated illustrative editorial image, created with the built-in image generation tool for the foundation presentation. It depicts a fictional, modest neighbourhood community room with an open street door, shared wood table, chairs, books, plants, warm plaster and sage-green details. No people, beneficiaries, foundation premises or delivered programmes are represented. Suggested alt text: “Illustrative community room with an open door, shared table and books.”
+
+The original generated PNG is preserved at `/Users/jackbrown/.codex/generated_images/01a14fb2-5825-7e32-b3c8-64583ea27192/exec-14730353-105f-4c95-b4be-dced50e340f7.png` (1536 × 1024). The delivery JPEG is 1200 × 800 pixels, 196,098 bytes, proportionally resized and compressed at quality 85 with Pillow, without cropping or other image edits.
+
+Generation prompt:
+
+> Use case: photorealistic-natural. Asset type: landscape 3:2 editorial website image for a community foundation. Primary request: A quiet, welcoming neighbourhood community hub. Daylight enters through an open street door into a modest, airy room, with a simple shared wood table, a few chairs, books, one plant, warm plaster walls and muted sage-green details. Style/medium: restrained, credible editorial photography; authentic everyday space with real textures, natural lens perspective. Composition/framing: landscape 3:2, calm simple composition, eye-level view from near the open doorway with the room and table visible. Lighting/mood: soft natural daylight, respectful and hopeful, no dramatic or glowing lighting. Constraints: No people, logos, signage or readable text. No luxury villa, ocean view, clinical styling, fantasy architecture, commercial gaming elements, visual collage, or lavish furniture. Keep the space modest and believable.
