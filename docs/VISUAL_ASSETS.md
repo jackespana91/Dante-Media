@@ -57,7 +57,7 @@ These venture assets are for their named business and project presentations. The
 
 The supplied `playbespoke-logo-dark.svg` is the white/lime identity designed for dark surfaces. The black `playbespoke-logo.svg` is the supplied variant for light surfaces. Both files are preserved as source assets; the current presentation uses gameplay imagery and text labels rather than overlaid logos.
 
-`assets/ventures/dante-media-mark-160.webp` is a proportional 160 × 160 delivery derivative of the full supplied parent artwork. It preserves the complete frame. Both parent artwork files remain available; the current header uses a simple text navigation identity. The About page uses an HTML typographic statement instead of the poster artwork.
+`assets/ventures/dante-media-mark-160.webp` is a proportional 160 × 160 delivery derivative of the full supplied parent artwork. It preserves the complete frame. Both parent artwork files remain available; the current header uses a text navigation identity with an original decorative aperture motif. The About page uses an HTML typographic statement instead of the poster artwork.
 
 ## Foundation community visual — 18 October 2026
 
@@ -68,3 +68,11 @@ The original generated PNG is preserved at `/Users/jackbrown/.codex/generated_im
 Generation prompt:
 
 > Use case: photorealistic-natural. Asset type: landscape 3:2 editorial website image for a community foundation. Primary request: A quiet, welcoming neighbourhood community hub. Daylight enters through an open street door into a modest, airy room, with a simple shared wood table, a few chairs, books, one plant, warm plaster walls and muted sage-green details. Style/medium: restrained, credible editorial photography; authentic everyday space with real textures, natural lens perspective. Composition/framing: landscape 3:2, calm simple composition, eye-level view from near the open doorway with the room and table visible. Lighting/mood: soft natural daylight, respectful and hopeful, no dramatic or glowing lighting. Constraints: No people, logos, signage or readable text. No luxury villa, ocean view, clinical styling, fantasy architecture, commercial gaming elements, visual collage, or lavish furniture. Keep the space modest and believable.
+
+## Dante aperture — 18 October 2026
+
+`assets/dante-aperture.svg` is an original code-native vector illustration authored for this website. The transparent 800 × 900 canvas contains a sculptural, open rectangular portal in perspective, with silver exterior faces, restrained lime interior reveals, fine construction lines and a soft grounding shadow. Its geometry, gradients and lighting are native SVG; it uses no external images, fonts, traced brand marks or downloaded artwork. It is an editorial parent-brand motif, not a replacement for a supplied venture logo.
+
+A small flat interpretation of the aperture is drawn inline in the header as a decorative interface motif. The supplied parent and venture artwork files remain unchanged.
+
+The opening is transparent, and the SVG is designed to sit on the site's pale neutral surface (`#f6f7f2`). Use it as decorative hero artwork with an empty HTML `alt` when the adjacent heading already conveys the message. If a descriptive alternative is needed, use: “Sculptural silver doorway with lime interior surfaces.” A delivery render was inspected on the intended background using Sharp; the SVG remains the source and delivery master.

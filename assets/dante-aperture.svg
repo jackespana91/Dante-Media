@@ -1,0 +1,94 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="900" viewBox="0 0 800 900" fill="none">
+  <title>The Dante aperture</title>
+  <desc>An original sculptural silver portal with acid-lime interior surfaces, drawn in three-dimensional perspective.</desc>
+  <defs>
+    <linearGradient id="top" x1="257" y1="157" x2="474" y2="243" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FBFEF8"/><stop offset=".35" stop-color="#E2E8DF"/><stop offset=".59" stop-color="#B9C1B6"/><stop offset=".63" stop-color="#EEF3E9"/><stop offset="1" stop-color="#CBD3C6"/>
+    </linearGradient>
+    <linearGradient id="outerRight" x1="545" y1="136" x2="713" y2="550" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D1D8CC"/><stop offset=".17" stop-color="#A3AEA1"/><stop offset=".38" stop-color="#4C5A4D"/><stop offset=".52" stop-color="#202C24"/><stop offset=".66" stop-color="#7A8878"/><stop offset=".9" stop-color="#B3BFA9"/><stop offset="1" stop-color="#D6DDCC"/>
+    </linearGradient>
+    <linearGradient id="front" x1="220" y1="239" x2="556" y2="676" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E2E8DE"/><stop offset=".16" stop-color="#FBFDF7"/><stop offset=".33" stop-color="#C2CBBE"/><stop offset=".43" stop-color="#F5F8EF"/><stop offset=".49" stop-color="#DAE1D4"/><stop offset=".59" stop-color="#657362"/><stop offset=".64" stop-color="#D8E0D1"/><stop offset=".83" stop-color="#F8FBF2"/><stop offset="1" stop-color="#B8C4AF"/>
+    </linearGradient>
+    <linearGradient id="frontRight" x1="482" y1="186" x2="564" y2="655" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EEF3E8"/><stop offset=".25" stop-color="#BBC6B3"/><stop offset=".45" stop-color="#E1E8D9"/><stop offset=".48" stop-color="#F7FBEE"/><stop offset=".65" stop-color="#718069"/><stop offset=".68" stop-color="#CFD9C4"/><stop offset="1" stop-color="#E6EDDC"/>
+    </linearGradient>
+    <linearGradient id="limeLeft" x1="278" y1="356" x2="428" y2="343" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E7FF9D"/><stop offset=".13" stop-color="#D9F55F"/><stop offset=".68" stop-color="#B4D342"/><stop offset="1" stop-color="#587124"/>
+    </linearGradient>
+    <linearGradient id="limeFloor" x1="462" y1="569" x2="511" y2="649" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6C842A"/><stop offset=".24" stop-color="#B9D948"/><stop offset=".8" stop-color="#DCF86A"/><stop offset="1" stop-color="#F0FFAF"/>
+    </linearGradient>
+    <linearGradient id="rear" x1="380" y1="205" x2="693" y2="530" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#84947C"/><stop offset=".38" stop-color="#28372B"/><stop offset="1" stop-color="#8B9C78"/>
+    </linearGradient>
+    <linearGradient id="foot" x1="324" y1="662" x2="472" y2="686" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F6FAEC"/><stop offset=".55" stop-color="#929F86"/><stop offset="1" stop-color="#D6E1C7"/>
+    </linearGradient>
+    <linearGradient id="line" x1="121" y1="555" x2="743" y2="354" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#344F35" stop-opacity="0"/><stop offset=".23" stop-color="#6D8568" stop-opacity=".55"/><stop offset=".8" stop-color="#6D8568" stop-opacity=".55"/><stop offset="1" stop-color="#344F35" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="shadow" x="108" y="636" width="647" height="204" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="22"/>
+    </filter>
+    <filter id="contact" x="267" y="682" width="362" height="79" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feGaussianBlur stdDeviation="7"/>
+    </filter>
+    <clipPath id="openingClip">
+      <path d="m265 297 195-75 83 343-195 76-83-344Z"/>
+    </clipPath>
+    <clipPath id="frontClip">
+      <path fill-rule="evenodd" d="M186 257 491 139 608 622 303 740 186 257ZM265 297 460 222 543 565 348 641 265 297Z" clip-rule="evenodd"/>
+    </clipPath>
+  </defs>
+
+  <!-- Transparent field; perspective rules are secondary to the sculpture. -->
+  <g stroke="#81947B" stroke-width=".65" opacity=".2">
+    <path d="m24 786 752-291M0 649l800 162M35 899 686-266"/>
+    <path d="M505 83 686 830M131 205l606 133" stroke-dasharray="2 7"/>
+  </g>
+  <path d="m172 760 372-120 152 79-372 69Z" fill="#42513C" opacity=".18" filter="url(#shadow)"/>
+  <path d="m301 731 235-60 70 39-243 27Z" fill="#2C4028" opacity=".22" filter="url(#contact)"/>
+
+  <!-- A single fine trajectory passes behind the aperture. -->
+  <path d="M80 592c105 72 201 47 316-56s219-194 340-160" stroke="url(#line)" stroke-width="1"/>
+
+  <!-- Rear extrusion, then its exposed top and right faces. -->
+  <path fill="url(#rear)" fill-rule="evenodd" d="m262 219 305-118 117 483-305 118-117-483Zm79 40 195-75 83 343-195 76-83-344Z" clip-rule="evenodd"/>
+  <path d="m186 257 76-38L567 101l-76 38-305 118Z" fill="url(#top)"/>
+  <path d="m491 139 76-38 117 483-76 38-117-483Z" fill="url(#outerRight)"/>
+
+  <!-- Interior reveals are bright only where the light can reach them. -->
+  <g clip-path="url(#openingClip)">
+  <path d="m265 297 76-38 83 344-76 38-83-344Z" fill="url(#limeLeft)"/>
+  <path d="m348 641 76-38 195-76-76 38-195 76Z" fill="url(#limeFloor)"/>
+  <path d="m341 259 195-75 83 343" stroke="#1C2A1D" stroke-width="2"/>
+  <path d="m341 259 83 344 195-76" stroke="#7C942D" stroke-width="1"/>
+  <path d="m348 268 80 327" stroke="#EFFFAB" stroke-opacity=".38" stroke-width=".75"/>
+
+  </g>
+
+  <!-- The front is one solid polished surface, with a narrow machined bevel. -->
+  <path fill="url(#front)" fill-rule="evenodd" d="M186 257 491 139 608 622 303 740 186 257ZM265 297 460 222 543 565 348 641 265 297Z" clip-rule="evenodd"/>
+  <path d="m491 139 117 483-65-57-83-343 31-83Z" fill="url(#frontRight)"/>
+  <path d="m303 740 305-118-65-57-195 76-45 99Z" fill="url(#foot)"/>
+  <g clip-path="url(#frontClip)">
+    <path d="M167 248 538 99l8 34L175 282l-8-34Z" fill="#FFF" fill-opacity=".48"/>
+    <path d="m190 516 422-164 4 17-422 164-4-17Z" fill="#FFF" fill-opacity=".13"/>
+    <path d="m204 574 422-164 2 9-422 164-2-9Z" fill="#203A21" fill-opacity=".14"/>
+    <path d="m213 627 422-164 9 38-422 164-9-38Z" fill="#FFF" fill-opacity=".16"/>
+  </g>
+  <path d="m189 258 301-116 115 478-301 116-115-478Z" stroke="#F9FFF0" stroke-opacity=".75" stroke-width="1"/>
+  <path d="m265 297 195-75 83 343-195 76-83-344Z" stroke="#59684E" stroke-opacity=".6" stroke-width="1.1"/>
+  <path d="m268 299 79 335" stroke="#F2FFD4" stroke-width="1.5"/>
+  <path d="m351 642 192-74" stroke="#FBFFE8" stroke-width="1.25"/>
+  <path d="m493 141 72-36 115 477" stroke="#F0F7E8" stroke-opacity=".65" stroke-width=".8"/>
+  <path d="m305 741 303-117" stroke="#7B8A70" stroke-width=".8"/>
+
+  <!-- Sparse registration details give the object an exact, architectural scale. -->
+  <g stroke="#687F60" stroke-width=".8" opacity=".4">
+    <path d="M126 275h14m-7-7v14M652 636h14m-7-7v14"/>
+    <path d="m95 772 37-14m571-61 37-14"/>
+  </g>
+</svg>
