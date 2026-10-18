@@ -6,7 +6,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 from urllib.parse import urljoin
-import html, json, shutil
+import html, json, os, re, shutil
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from content import BRANDS, GROUP_EMAIL, NAV, PAGE_META, SITE_URL
 
@@ -49,6 +49,10 @@ def main() -> None:
     DIST.mkdir(parents=True)
     shutil.copytree(ROOT / 'assets', DIST / 'assets')
     env = Environment(loader=FileSystemLoader(str(TEMPLATES)), autoescape=select_autoescape(['html','xml']))
+    staging = os.environ.get('DANTE_STAGING', '').lower() in {'1', 'true', 'yes'}
+    base_path = os.environ.get('DANTE_BASE_PATH', '').rstrip('/')
+    if base_path and (not base_path.startswith('/') or '//' in base_path):
+        raise ValueError('DANTE_BASE_PATH must be empty or a site subpath beginning with /')
     featured_names = {'PlayBeSpoke','IGW³','Futpal','Broken Homes','Lucky Bastards','The Plug TV'}
     for path,(page_key, template) in PAGES.items():
         title, desc = PAGE_META[path]
@@ -60,18 +64,22 @@ def main() -> None:
             'featured':[b for b in BRANDS if b['name'] in featured_names],
             'gaming_brands':[b for b in BRANDS if b['category']=='gaming'],
             'media_brands':[b for b in BRANDS if b['category']=='media'],
-            'group_email':GROUP_EMAIL, 'year':2026,
+            'group_email':GROUP_EMAIL, 'year':date.today().year, 'is_staging':staging,
             'schema_json':json.dumps(schema_for(path,title,desc),ensure_ascii=False).replace('<','\\u003c'),
         }
         out = DIST / path.lstrip('/') / 'index.html' if path != '/' else DIST / 'index.html'
         out.parent.mkdir(parents=True,exist_ok=True)
-        out.write_text(env.get_template(template).render(**context),encoding='utf-8')
+        markup = env.get_template(template).render(**context)
+        if base_path:
+            markup = re.sub(r'((?:href|src)=["\'])/(?!/)', lambda m: m.group(1)+base_path+'/', markup)
+        out.write_text(markup, encoding='utf-8')
     sitemap = ['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for path in PAGES:
         sitemap.append('  <url><loc>'+html.escape(urljoin(SITE_URL+'/',path.lstrip('/')) )+'</loc></url>')
     sitemap.append('</urlset>')
     (DIST/'sitemap.xml').write_text('\n'.join(sitemap)+'\n',encoding='utf-8')
-    (DIST/'robots.txt').write_text('User-agent: *\nAllow: /\nSitemap: '+SITE_URL+'/sitemap.xml\n',encoding='utf-8')
+    robots = 'User-agent: *\nDisallow: /\n' if staging else 'User-agent: *\nAllow: /\nSitemap: '+SITE_URL+'/sitemap.xml\n'
+    (DIST/'robots.txt').write_text(robots, encoding='utf-8')
     print(f'Built {len(PAGES)} pages to {DIST}')
 
 if __name__ == '__main__': main()
