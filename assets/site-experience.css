@@ -657,3 +657,117 @@ body {
     animation: none;
   }
 }
+
+/* Distinct visual worlds for the four parts of the portfolio. */
+.division-card.gaming {
+  background-image: linear-gradient(90deg, rgba(8,9,12,.96) 0%, rgba(8,9,12,.79) 43%, rgba(8,9,12,.18) 100%), linear-gradient(0deg, rgba(8,9,12,.48), transparent 62%), url("/assets/sector-gaming.jpg");
+  background-size: cover;
+  background-position: center 46%;
+}
+.division-card.media {
+  background-image: linear-gradient(90deg, rgba(8,9,12,.95) 0%, rgba(8,9,12,.78) 43%, rgba(8,9,12,.18) 100%), linear-gradient(0deg, rgba(8,9,12,.48), transparent 62%), url("/assets/sector-media.jpg");
+  background-size: cover;
+  background-position: center 48%;
+}
+.division-card.sport {
+  background-image: linear-gradient(90deg, rgba(8,9,12,.94) 0%, rgba(8,9,12,.72) 45%, rgba(8,9,12,.08) 100%), linear-gradient(0deg, rgba(8,9,12,.5), transparent 62%), url("/assets/sector-sport.jpg");
+  background-size: cover;
+  background-position: center 56%;
+}
+.division-card.entertainment {
+  background-image: linear-gradient(90deg, rgba(8,9,12,.95) 0%, rgba(8,9,12,.76) 44%, rgba(8,9,12,.12) 100%), linear-gradient(0deg, rgba(8,9,12,.5), transparent 62%), url("/assets/dante-world.jpg");
+  background-size: cover;
+  background-position: 68% center;
+}
+.foundation-section {
+  background-image: linear-gradient(90deg, rgba(11,10,9,.96) 0%, rgba(11,10,9,.84) 44%, rgba(11,10,9,.33) 100%), url("/assets/sector-foundation.jpg");
+  background-size: cover;
+  background-position: center 55%;
+}
+.foundation-section::after {
+  opacity: .45;
+}
+.page-hero.has-visual {
+  display: flex;
+  align-items: center;
+  min-height: 620px;
+  padding: 110px 0;
+}
+.page-hero.has-visual::before,
+.page-hero.has-visual::after {
+  display: none;
+}
+.page-hero.has-visual .container > * {
+  max-width: 58%;
+}
+.page-hero.has-visual h1 {
+  font-size: clamp(3.7rem, 6.25vw, 7rem);
+}
+.page-hero.has-visual p {
+  max-width: 600px;
+  font-size: 18px;
+}
+.page-visual {
+  position: absolute;
+  top: 50%;
+  right: max(48px, calc((100vw - 1340px) / 2));
+  width: min(36vw, 480px);
+  height: clamp(330px, 34vw, 470px);
+  margin: 0;
+  overflow: hidden;
+  border: 1px solid rgba(215,185,130,.28);
+  background: #101116;
+  box-shadow: 0 32px 90px rgba(0,0,0,.42), inset 0 1px rgba(255,255,255,.07);
+  transform: translateY(-50%);
+}
+.page-visual::before {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  background: linear-gradient(0deg, rgba(8,9,12,.68), transparent 55%);
+  content: "";
+  pointer-events: none;
+}
+.page-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(.84) contrast(1.04) brightness(.86);
+}
+.page-visual figcaption {
+  position: absolute;
+  z-index: 2;
+  right: 22px;
+  bottom: 22px;
+  left: 22px;
+  color: rgba(246,241,232,.9);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+@media (max-width: 950px) {
+  .page-hero.has-visual {
+    display: block;
+  }
+  .page-hero.has-visual .container > * {
+    max-width: 100%;
+  }
+  .page-visual {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: min(calc(100% - 58px), 720px);
+    height: clamp(270px, 62vw, 440px);
+    margin: 20px auto 0;
+    transform: none;
+  }
+}
+@media (max-width: 670px) {
+  .page-visual {
+    width: min(calc(100% - 38px), 620px);
+    height: 68vw;
+    max-height: 340px;
+  }
+}
