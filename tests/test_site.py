@@ -56,6 +56,11 @@ class SiteTests(unittest.TestCase):
         self.assertIn('not yet an active support service', foundation)
         self.assertIn('safeguard', foundation)
 
+    def test_contact_route_does_not_imply_support_service(self):
+        contact = (DIST / 'contact/index.html').read_text(encoding='utf-8').lower()
+        self.assertIn('mailto:info@dante-media.io', contact)
+        self.assertIn('not an emergency or crisis service', contact)
+
     def test_sitemap_and_robots(self):
         sitemap = (DIST / 'sitemap.xml').read_text(encoding='utf-8')
         self.assertEqual(sitemap.count('<loc>'), len(PAGES))
